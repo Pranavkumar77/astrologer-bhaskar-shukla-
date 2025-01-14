@@ -1,0 +1,75 @@
+.contact-form-container {
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center horizontally */
+  padding: 40px;
+  background-color: white; /* Astro theme purple background */
+  color: #ff9800; /* White text for the header */
+}
+
+.contact-form-container form {
+  width: 50%; /* Set width to 50% */
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form-container h2 {
+  text-align: center; /* Center heading */
+  color: #333333; /* White color for heading */
+  margin-bottom: 20px;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  width: calc(100% - 20px); /* Adjust width to fit within padding */
+  border-radius: 4px;
+  border: 1px solid #ff9800; /* Purple border */
+  background-color: #f4f4f4; /* Light background for input */
+  color: #333; /* Darker input text color */
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+  border: 2px solid #e0b169; /* Lighter purple on focus */
+  outline: none; /* Remove default outline */
+}
+
+.contact-form-container button {
+  background-color: white; /* Lighter purple for the button */
+  color: #ff9800;
+  padding: 10px;
+  width: 30%;
+  border: 1px solid #ff9800;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form-container button:hover {
+  background-color: #721704;
+  color: white; /* Slightly lighter purple on hover */
+}
+
+@media (max-width: 768px) {
+  .contact-form-container form {
+    width: 70%; /* Adjust width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-container form {
+    width: 90%; /* Adjust width for mobile */
+  }
+
+  .contact-form-container button {
+    width: 50%; /* Wider button on small screens */
+  }
+}

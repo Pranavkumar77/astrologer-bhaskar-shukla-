@@ -1,4 +1,6 @@
 .App {
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -35,4 +37,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column; /* Arrange children in a column */
+  min-height: 100vh; /* Minimum height of viewport */
+  margin: 0;
 }

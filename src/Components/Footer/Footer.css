@@ -1,0 +1,21 @@
+/* Footer.css */
+.footer {
+    text-align: center;
+    padding: 1px;
+    background-color: #721704; /* Match with navbar */
+    color: rgb(212, 199, 193);
+    position: relative; /* Make it sticky */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+    border-top: 1px solid rgb(55, 21, 7);
+  }
+  
+  /* body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full height */
+  
+  
+  /* main {
+    flex-grow: 1; /* Allow main content to grow and push footer down */
+  

@@ -1,0 +1,60 @@
+.testimonials {
+  background-color: #721704; /* Matching purple background */
+  padding: 40px;
+  text-align: center;
+  color: white; /* Change text color to white */
+}
+
+.testimonial-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.testimonial-item {
+  background-color: #ffffff; /* White background for the testimonial cards */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for contrast */
+  margin: 20px;
+  padding: 20px;
+  width: calc(25% - 20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-item:hover {
+  transform: translateY(-10px); /* Subtle hover effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-item img {
+  border-radius: 50%;
+  border: 3px solid #D97706; /* Add a purple border around the image */
+  margin-bottom: 10px;
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+.testimonial-item p {
+  font-style: italic;
+  color: #D97706; /* Purple text for the quote */
+}
+
+.testimonial-item h4 {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #D97706; /* Purple color for the name */
+}
+
+@media (max-width: 768px) {
+  .testimonial-item {
+    width: calc(45% - 40px); /* Adjust width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
