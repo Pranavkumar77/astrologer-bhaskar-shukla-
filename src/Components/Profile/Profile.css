@@ -132,10 +132,16 @@
   .profile-container {
     flex-direction: column; /* Stack elements vertically */
     gap: 15px;
+    padding: 20px 20px 20px 5px;
   }
 
   .profile-card {
     max-width: 100%;
+    padding: 20px 10px;
+  }
+
+  .expertise-card {
+    padding: 10px;
   }
   .expertise-item {
     width: 50%;
@@ -162,8 +168,19 @@
 }
 
 @media (max-width: 480px) {
+  .profile-container {
+    padding: 20px 20px 20px 5px;
+  }
   .profile-name {
     font-size: 20px;
+  }
+
+  .profile-card {
+    padding: 20px 10px;
+  }
+
+  .expertise-card {
+    padding: 10px;
   }
 
   .profile-description {
