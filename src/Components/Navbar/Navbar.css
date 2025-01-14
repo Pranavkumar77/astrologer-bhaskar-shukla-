@@ -10,6 +10,7 @@
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid #ddd;
+  position: relative;
 }
 
 .logo-container {

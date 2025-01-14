@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Products.css";
 
 const Products = () => {
@@ -41,8 +41,31 @@ const Products = () => {
     },
   ];
 
-  const [products, setProducts] = useState(allProducts.slice(0, 4)); // Show only the first 3 products initially
+  const [products, setProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
+
+  // Adjust products to show based on screen size
+  useEffect(() => {
+    const updateVisibleProducts = () => {
+      const screenWidth = window.innerWidth;
+      if (!showAll) {
+        if (screenWidth <= 480) {
+          setProducts(allProducts.slice(0, 2)); // Show 2 products for mobile screens
+        } else if (screenWidth <= 768) {
+          setProducts(allProducts.slice(0, 3)); // Show 3 products for tablets
+        } else {
+          setProducts(allProducts.slice(0, 4)); // Show 4 products for larger screens
+        }
+      } else {
+        setProducts(allProducts); // Show all products if "View All" is clicked
+      }
+    };
+
+    updateVisibleProducts();
+    window.addEventListener("resize", updateVisibleProducts);
+
+    return () => window.removeEventListener("resize", updateVisibleProducts);
+  }, [allProducts, showAll]);
 
   const handleViewAll = () => {
     setProducts(allProducts); // Show all products
