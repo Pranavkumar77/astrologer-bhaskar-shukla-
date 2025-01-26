@@ -1,63 +1,27 @@
 import React, { useState, useEffect } from "react";
+import {allProducts} from "./ProductsList"
 import "./Products.css";
 
 const Products = () => {
-  const allProducts = [
-    {
-      name: "5 Mukhi Rudraksha",
-      description: "Blessed and energized premium quality Rudraksha",
-      price: 2100,
-      image: "🪷",
-    },
-    {
-      name: "Crystal Mala",
-      description: "Pure crystal mala for meditation and healing",
-      price: 1500,
-      image: "🔮",
-    },
-    {
-      name: "Yellow Sapphire",
-      description: "Natural and certified Pukhraj stone",
-      price: 5500,
-      image: "💎",
-    },
-    {
-      name: "Brass Puja Thali Set",
-      description: "Complete pooja thali with all accessories",
-      price: 3200,
-      image: "🪔",
-    },
-    {
-      name: "Rose Quartz Mala",
-      description: "Symbol of love and positivity",
-      price: 1800,
-      image: "🌸",
-    },
-    {
-      name: "Tiger Eye Bracelet",
-      description: "Energized bracelet for confidence and focus",
-      price: 1300,
-      image: "🐯",
-    },
-  ];
-
   const [products, setProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("Rudraksha");
 
-  // Adjust products to show based on screen size
   useEffect(() => {
     const updateVisibleProducts = () => {
-      const screenWidth = window.innerWidth;
+      const filteredProducts = allProducts[selectedFilter] || [];
+
       if (!showAll) {
+        const screenWidth = window.innerWidth;
         if (screenWidth <= 480) {
-          setProducts(allProducts.slice(0, 2)); // Show 2 products for mobile screens
+          setProducts(filteredProducts.slice(0, 2)); // Show 2 products for mobile screens
         } else if (screenWidth <= 768) {
-          setProducts(allProducts.slice(0, 3)); // Show 3 products for tablets
+          setProducts(filteredProducts.slice(0, 3)); // Show 3 products for tablets
         } else {
-          setProducts(allProducts.slice(0, 4)); // Show 4 products for larger screens
+          setProducts(filteredProducts.slice(0, 4)); // Show 4 products for larger screens
         }
       } else {
-        setProducts(allProducts); // Show all products if "View All" is clicked
+        setProducts(filteredProducts); // Show all products if "View All" is clicked
       }
     };
 
@@ -65,11 +29,15 @@ const Products = () => {
     window.addEventListener("resize", updateVisibleProducts);
 
     return () => window.removeEventListener("resize", updateVisibleProducts);
-  }, [allProducts, showAll]);
+  }, [showAll, selectedFilter]);
 
   const handleViewAll = () => {
-    setProducts(allProducts); // Show all products
     setShowAll(true);
+  };
+
+  const handleFilterChange = (filter) => {
+    setSelectedFilter(filter);
+    setShowAll(false); // Reset to show limited products when filter changes
   };
 
   return (
@@ -79,11 +47,38 @@ const Products = () => {
         Authentic and blessed items for your spiritual journey
       </p>
       <div className="filter-section">
-        <button className="filter-button active">All Items</button>
-        <button className="filter-button">Rudraksha</button>
-        <button className="filter-button">Malas</button>
-        <button className="filter-button">Gemstones</button>
-        <button className="filter-button">Pooja Items</button>
+        <button
+          className={`filter-button ${
+            selectedFilter === "Rudraksha" ? "active" : ""
+          }`}
+          onClick={() => handleFilterChange("Rudraksha")}
+        >
+          Rudraksha
+        </button>
+        <button
+          className={`filter-button ${
+            selectedFilter === "EvilEyeRemoval" ? "active" : ""
+          }`}
+          onClick={() => handleFilterChange("EvilEyeRemoval")}
+        >
+          Evil Eye Removal
+        </button>
+        <button
+          className={`filter-button ${
+            selectedFilter === "Gemstones" ? "active" : ""
+          }`}
+          onClick={() => handleFilterChange("Gemstones")}
+        >
+          Gemstones
+        </button>
+        <button
+          className={`filter-button ${
+            selectedFilter === "Kawach" ? "active" : ""
+          }`}
+          onClick={() => handleFilterChange("Kawach")}
+        >
+          Kawach
+        </button>
       </div>
       <div className="product-grid">
         {products.map((product, index) => (
@@ -98,7 +93,7 @@ const Products = () => {
       </div>
       {!showAll && (
         <button className="view-all-products" onClick={handleViewAll}>
-          View All Products →
+          View All  →
         </button>
       )}
     </div>

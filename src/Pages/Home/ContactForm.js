@@ -1,4 +1,3 @@
-// ContactForm.js
 import React, { useState } from 'react';
 import './ContactForm.css'; // Import the CSS for styling
 
@@ -12,8 +11,15 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Message sent from ${formData.name}`);
-    // Here you would typically send formData to your server
+    
+    // Create a WhatsApp message with the form data
+    const phoneNumber = "8055831831"; // Replace with your WhatsApp number
+    const message = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`;
+    
+    // Open WhatsApp with the message
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+
+    // Reset form data
     setFormData({ name: '', email: '', message: '' });
   };
 

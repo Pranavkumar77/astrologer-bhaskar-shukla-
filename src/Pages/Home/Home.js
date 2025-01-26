@@ -8,6 +8,7 @@ import PoojaList from "../PoojaList/PoojaList";
 import Products from "../Products/Products";
 import Footer from "../../Components/Footer/Footer";
 import astroChakra from "../../Artifacts/astroChakra.png"
+import WhatsAppChat from "../../Components/WhatsappIcon/WhatsappIcon";
 
 
 const Home = () => {
@@ -34,6 +35,7 @@ const Home = () => {
       <Products />
       <Testimonials />
       <ContactForm />
+      <WhatsAppChat />
       <Footer/>
     </>
   );
